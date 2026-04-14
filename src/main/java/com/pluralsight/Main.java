@@ -1,58 +1,21 @@
 package com.pluralsight;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class Main {
     static void main() {
         //Instantiate Scanner
         Scanner scanner = new Scanner(System.in);
 
-        //Declare and assign variables
+        System.out.println("Please enter your full name");
+        String userFullName = scanner.nextLine();
 
-        //Prompts
-        //First Name
-        System.out.println("Please enter your name");
-        System.out.print("First name: ");
-        String userFirstName = scanner.nextLine();
-        userFirstName = userFirstName.trim();
-        userFirstName = uppercasePolice(userFirstName);
+        String[] nameSplit = userFullName.split(" ");
 
-        //Middle name:
-        System.out.print("Middle name: ");
-        String userMiddleName = scanner.nextLine();
-        userMiddleName = userMiddleName.trim();
-        userMiddleName = uppercasePolice(userMiddleName);
-
-        //Last name:
-        System.out.print("Last name: ");
-        String userLastName = scanner.nextLine();
-        userLastName = userLastName.trim();
-        userLastName = uppercasePolice(userLastName);
-
-        System.out.println(concatenateName(userFirstName, userMiddleName,userLastName));
+        System.out.printf("First name: %s\n", nameSplit[0]);
+        System.out.printf("Middle name: %s\n", nameSplit[1]);
+        System.out.printf("Last name: %s\n", nameSplit[2]);
     }
-    //Create a method that concatenate all the string user input
-    static String concatenateName(String firstName, String middleName, String lastName) {
-
-        String result = firstName + " " + middleName + " " + lastName;
-
-        if (firstName.isEmpty()) {
-            result = middleName + " " + lastName;
-        } else if (middleName.isEmpty()) {
-            result = firstName + " " + lastName;
-        } else if (lastName.isEmpty()) {
-            result = firstName + " " + middleName;
-        }
-        return result;
-    }
-
-    static String uppercasePolice(String name) {
-        char firstLetter = name.charAt(0);
-        char uppercaseChanger = Character.toUpperCase(firstLetter);
-        String theRest = name.substring(1);
-
-        return uppercaseChanger + theRest;
-    }
-
 }
 
