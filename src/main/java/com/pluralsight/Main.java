@@ -1,17 +1,64 @@
 package com.pluralsight;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+        //Instantiate Scanner
+        Scanner scanner = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
-        }
+        //Declare and assign variables
+
+        //Prompts
+        //First Name
+        System.out.println("Please enter your name");
+        System.out.print("First name: ");
+        String userFirstName = scanner.nextLine();
+        userFirstName = userFirstName.trim();
+        userFirstName = uppercasePolice(userFirstName);
+
+        //Middle name:
+        System.out.print("Middle name: ");
+        String userMiddleName = scanner.nextLine();
+        userMiddleName = userMiddleName.trim();
+        userMiddleName = uppercasePolice(userMiddleName);
+
+        //Last name:
+        System.out.print("Last name: ");
+        String userLastName = scanner.nextLine();
+        userLastName = userLastName.trim();
+        userLastName = uppercasePolice(userLastName);
+
+        //Suffix
+        System.out.print("Suffix: ");
+        String userSuffix = scanner.nextLine();
+        userSuffix = userSuffix.trim().toUpperCase();
+
+
+        System.out.println(concatenateName(userFirstName, userMiddleName,userLastName,userSuffix));
     }
+    //Create a method that concatenate all the string user input
+    static String concatenateName(String firstName, String middleName, String lastName, String suffix) {
+
+        String result = firstName + " " + middleName + " " + lastName;
+
+        if (firstName.isEmpty()) {
+            result = middleName + " " + lastName + ", " + suffix;
+        } else if (middleName.isEmpty()) {
+            result = firstName + " " + lastName + ", " + suffix;
+        } else if (lastName.isEmpty()) {
+            result = firstName + " " + middleName + ", " + suffix;
+        }
+        return result;
+    }
+
+    static String uppercasePolice(String name) {
+        char firstLetter = name.charAt(0);
+        char uppercaseChanger = Character.toUpperCase(firstLetter);
+        String theRest = name.substring(1);
+
+        return uppercaseChanger + theRest;
+    }
+
 }
+
