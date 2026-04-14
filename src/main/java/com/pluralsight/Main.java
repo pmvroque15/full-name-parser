@@ -29,25 +29,19 @@ public class Main {
         userLastName = userLastName.trim();
         userLastName = uppercasePolice(userLastName);
 
-        //Suffix
-        System.out.print("Suffix: ");
-        String userSuffix = scanner.nextLine();
-        userSuffix = userSuffix.trim().toUpperCase();
-
-
-        System.out.println(concatenateName(userFirstName, userMiddleName,userLastName,userSuffix));
+        System.out.println(concatenateName(userFirstName, userMiddleName,userLastName));
     }
     //Create a method that concatenate all the string user input
-    static String concatenateName(String firstName, String middleName, String lastName, String suffix) {
+    static String concatenateName(String firstName, String middleName, String lastName) {
 
         String result = firstName + " " + middleName + " " + lastName;
 
         if (firstName.isEmpty()) {
-            result = middleName + " " + lastName + ", " + suffix;
+            result = middleName + " " + lastName;
         } else if (middleName.isEmpty()) {
-            result = firstName + " " + lastName + ", " + suffix;
+            result = firstName + " " + lastName;
         } else if (lastName.isEmpty()) {
-            result = firstName + " " + middleName + ", " + suffix;
+            result = firstName + " " + middleName;
         }
         return result;
     }
